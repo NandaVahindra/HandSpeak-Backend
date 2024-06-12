@@ -1,0 +1,25 @@
+{
+  "name": "handspeak-bisi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/server/server.js",
+    "start:dev": "nodemon ./src/server/server.js",
+    "start:index:dev": "nodemon ./index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@hapi/hapi": "^21.3.9",
+    "@tensorflow/tfjs-node": "^4.20.0",
+    "@tensorflow/tfjs-tflite": "^0.0.1-alpha.10",
+    "dotenv": "^16.4.5",
+    "formidable": "^3.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.3"
+  }
+}
