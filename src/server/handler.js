@@ -15,8 +15,8 @@ async function postPredictHandler(request, h) {
     });
 
     // console.log('Files:', files); // Debugging log
-
-    const fileArray = files.file;
+    const fileKey = Object.keys(files)[0];
+    const fileArray = files[fileKey];
     if (!fileArray || fileArray.length === 0) {
         // console.error('File not found in the request payload');
         const response = h.response({
