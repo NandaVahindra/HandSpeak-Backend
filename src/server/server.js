@@ -28,7 +28,7 @@ const Hapi = require('@hapi/hapi');
         if (response instanceof InputError) {
             const newResponse = h.response({
                 status: 'fail',
-                message: `Terjadi kesalahan dalam melakukan prediksi`
+                message: `Prediction Error: ${response.message}`
             })
             newResponse.code(response.statusCode)
             return newResponse;
