@@ -15,10 +15,13 @@ const Hapi = require('@hapi/hapi');
         },
     });
 
-    const model = await loadModel();
-    console.log("Model loaded successfully");
+    const modelBisindo = await loadModel(process.env.MODEL_BISINDO);
+    console.log("First model loaded successfully");
+    const modelSibi = await loadModel(process.env.MODEL_SIBI_RGB);
+    console.log("Second model loaded successfully");
 
-    server.app.model = model;
+    server.app.modelBisindo = modelBisindo;
+    server.app.modelSibi = modelSibi;
 
     server.route(routes);
 
@@ -28,7 +31,7 @@ const Hapi = require('@hapi/hapi');
         if (response instanceof InputError) {
             const newResponse = h.response({
                 status: 'fail',
-                message: `Terjadi kesalahan dalam melakukan prediksi`
+                message: `Prediction error: ${response.message}`
             })
             newResponse.code(response.statusCode)
             return newResponse;

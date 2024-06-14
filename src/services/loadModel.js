@@ -1,5 +1,5 @@
 const tf = require('@tensorflow/tfjs-node');
-async function loadModel() {
-    return tf.loadGraphModel(process.env.MODEL_BISINDO);
+async function loadModel(modelPath) {
+    return tf.loadGraphModel(modelPath);
 }
 module.exports = loadModel; 
