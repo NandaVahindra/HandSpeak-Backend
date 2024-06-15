@@ -6,11 +6,11 @@ const loadModel = require('../services/loadModel');
 const Hapi = require('@hapi/hapi');
 (async () => {
     const server = Hapi.server({
-        port: 3000,
-        host: 'localhost',
+        port: process.env.PORT,
+        host: '0.0.0.0',
         routes: {
             cors: {
-              origin: ['*'],
+                origin: ['*'],
             },
         },
     });
@@ -31,6 +31,7 @@ const Hapi = require('@hapi/hapi');
         if (response instanceof InputError) {
             const newResponse = h.response({
                 status: 'fail',
+                code_status: `${response.statusCode}`,
                 message: `Prediction error: ${response.message}`
             })
             newResponse.code(response.statusCode)
@@ -42,8 +43,18 @@ const Hapi = require('@hapi/hapi');
             if(response.output.statusCode === 413){
                 message = 'Payload content length greater than maximum allowed';
             }
+
+
+            if (message == 'Not Found'){
+                // code_status = 404;
+                message = 'The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.';
+            }else if (message == 'Invalid'){
+                
+            }
             const newResponse = h.response({
                 status: 'fail',
+                // code_status: `${response.statusCode}`,
+                code_status : response.output.statusCode,
                 message: message
             })
             newResponse.code(response.output.statusCode)

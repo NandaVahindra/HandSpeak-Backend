@@ -21,6 +21,7 @@ async function postBisindoPredictHandler(request, h) {
         // console.error('File not found in the request payload');
         const response = h.response({
             status: 'fail',
+            code_status: 400,
             message: 'No input image, file not found',
         })
         response.code(400);
@@ -41,15 +42,15 @@ async function postBisindoPredictHandler(request, h) {
 
     const data = {
         "result": label,
-      }
+    }
 
     const response = h.response({
         status: 'success',
         message: 'Bisindo Model is predicted successfully',
         data
     })
-      response.code(201);
-      return response;
+    response.code(201);
+    return response;
 }
 
 async function postSibiPredictHandler(request, h) {
@@ -71,6 +72,7 @@ async function postSibiPredictHandler(request, h) {
         // console.error('File not found in the request payload');
         const response = h.response({
             status: 'fail',
+            code_status: 400,
             message: 'No input image, file not found',
         })
         response.code(400);
@@ -91,15 +93,16 @@ async function postSibiPredictHandler(request, h) {
 
     const data = {
         "result": label,
-      }
+    }
 
     const response = h.response({
         status: 'success',
+        code_status: 201,
         message: 'Sibi Model is predicted successfully',
         data
     })
-      response.code(201);
-      return response;
+    response.code(201);
+    return response;
 }
 
 module.exports = {postBisindoPredictHandler, postSibiPredictHandler};
