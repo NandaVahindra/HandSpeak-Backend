@@ -8,10 +8,9 @@ RUN npm install
 
 COPY . .
 
-ENV PORT=3000
-
-ENV MODEL_BISINDO = 'https://storage.googleapis.com/capstone-bucket-model-bisindo/model.json'
-
-ENV MODEL_SIBI_RGB = 'https://storage.googleapis.com/capstone-bucket-model-sibi/ml_model_sibi_tfjs/model.json'
+ENV PORT=8080
+ENV MODEL_BISINDO='https://storage.googleapis.com/capstone-bucket-model-bisindo/model.json'
+ENV MODEL_SIBI_RGB='https://storage.googleapis.com/capstone-bucket-model-sibi/ml_model_sibi_tfjs/model.json'
+EXPOSE 8080
 
 CMD ["npm","start"]
