@@ -46,6 +46,7 @@ async function postBisindoPredictHandler(request, h) {
 
     const response = h.response({
         status: 'success',
+        code_status: 201,
         message: 'Bisindo Model is predicted successfully',
         data
     })
